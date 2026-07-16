@@ -4,18 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>prima | Hexo</title>
+  <title>PRIMA 降阶模型的物理含义、端口对应关系与仿真方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="PRIMA 降阶模型的物理含义、端口对应关系与仿真方法1. 问题背景考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成 [\mathbf C\dot{\mathbf x}(t)+\mathbf G\mathbf x(t)\mathbf B\mathbf u(t),] 输出方程为 [\mathbf y(t)\mathbf L^T\mathbf x(t).] 其中：  (\mathbf">
+  <meta name="description" content="window.MathJax &#x3D; {   tex: {     inlineMath: [[&#39;$&#39;, &#39;$&#39;]]   } };    1. 问题背景考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成  \[ \mathbf C\dot{\mathbf x}(t) + \mathbf G\mathbf x(t) &#x3D; \mathbf B\mathbf u(t), \]   输出方程为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="prima">
+<meta property="og:title" content="PRIMA 降阶模型的物理含义、端口对应关系与仿真方法">
 <meta property="og:url" content="http://example.com/2026/07/16/prima/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="PRIMA 降阶模型的物理含义、端口对应关系与仿真方法1. 问题背景考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成 [\mathbf C\dot{\mathbf x}(t)+\mathbf G\mathbf x(t)\mathbf B\mathbf u(t),] 输出方程为 [\mathbf y(t)\mathbf L^T\mathbf x(t).] 其中：  (\mathbf">
+<meta property="og:description" content="window.MathJax &#x3D; {   tex: {     inlineMath: [[&#39;$&#39;, &#39;$&#39;]]   } };    1. 问题背景考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成  \[ \mathbf C\dot{\mathbf x}(t) + \mathbf G\mathbf x(t) &#x3D; \mathbf B\mathbf u(t), \]   输出方程为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-07-16T09:01:30.000Z">
-<meta property="article:modified_time" content="2026-07-16T09:02:34.836Z">
+<meta property="article:modified_time" content="2026-07-16T09:07:58.895Z">
 <meta property="article:author" content="From the Beginning">
+<meta property="article:tag" content="PRIMA">
+<meta property="article:tag" content="模型降阶">
+<meta property="article:tag" content="电路仿真">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -87,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      prima
+      PRIMA 降阶模型的物理含义、端口对应关系与仿真方法
     </h1>
   
 
@@ -95,66 +98,289 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="PRIMA-降阶模型的物理含义、端口对应关系与仿真方法"><a href="#PRIMA-降阶模型的物理含义、端口对应关系与仿真方法" class="headerlink" title="PRIMA 降阶模型的物理含义、端口对应关系与仿真方法"></a>PRIMA 降阶模型的物理含义、端口对应关系与仿真方法</h1><h2 id="1-问题背景"><a href="#1-问题背景" class="headerlink" title="1. 问题背景"></a>1. 问题背景</h2><p>考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成</p>
-<h1 id="mathbf-C-dot-mathbf-x-t-mathbf-G-mathbf-x-t"><a href="#mathbf-C-dot-mathbf-x-t-mathbf-G-mathbf-x-t" class="headerlink" title="[\mathbf C\dot{\mathbf x}(t)+\mathbf G\mathbf x(t)"></a>[<br>\mathbf C\dot{\mathbf x}(t)<br>+<br>\mathbf G\mathbf x(t)</h1><p>\mathbf B\mathbf u(t),<br>]</p>
+        <script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']]
+  }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<h2 id="1-问题背景"><a href="#1-问题背景" class="headerlink" title="1. 问题背景"></a>1. 问题背景</h2><p>考虑一个线性 RC 电路，其经过节点分析或改进节点分析后，可以写成</p>
+<div class="math-display">
+\[
+\mathbf C\dot{\mathbf x}(t)
++
+\mathbf G\mathbf x(t)
+=
+\mathbf B\mathbf u(t),
+\]
+</div>
+
 <p>输出方程为</p>
-<h1 id="mathbf-y-t"><a href="#mathbf-y-t" class="headerlink" title="[\mathbf y(t)"></a>[<br>\mathbf y(t)</h1><p>\mathbf L^T\mathbf x(t).<br>]</p>
+<div class="math-display">
+\[
+\mathbf y(t)
+=
+\mathbf L^T\mathbf x(t).
+\]
+</div>
+
 <p>其中：</p>
 <ul>
-<li>(\mathbf x(t)\in\mathbb R^n)：原始电路状态，通常是节点电压；</li>
-<li>(\mathbf G\in\mathbb R^{n\times n})：电导矩阵；</li>
-<li>(\mathbf C\in\mathbb R^{n\times n})：电容矩阵；</li>
-<li>(\mathbf B\in\mathbb R^{n\times p})：输入端口矩阵；</li>
-<li>(\mathbf L\in\mathbb R^{n\times p})：输出端口选择矩阵；</li>
-<li>(p)：端口数量；</li>
-<li>(n)：原始系统阶数。</li>
+<li>$\mathbf x(t)\in\mathbb R^n$：原始电路状态，通常是节点电压；</li>
+<li>$\mathbf G\in\mathbb R^{n\times n}$：电导矩阵；</li>
+<li>$\mathbf C\in\mathbb R^{n\times n}$：电容矩阵；</li>
+<li>$\mathbf B\in\mathbb R^{n\times p}$：输入端口矩阵；</li>
+<li>$\mathbf L\in\mathbb R^{n\times p}$：输出端口选择矩阵；</li>
+<li>$p$：端口数量；</li>
+<li>$n$：原始系统阶数。</li>
 </ul>
 <p>频域形式为</p>
-<h1 id="mathbf-G-s-mathbf-C-mathbf-X-s"><a href="#mathbf-G-s-mathbf-C-mathbf-X-s" class="headerlink" title="[(\mathbf G+s\mathbf C)\mathbf X(s)"></a>[<br>(\mathbf G+s\mathbf C)\mathbf X(s)</h1><p>\mathbf B\mathbf U(s),<br>]</p>
+<div class="math-display">
+\[
+(\mathbf G+s\mathbf C)\mathbf X(s)
+=
+\mathbf B\mathbf U(s),
+\]
+</div>
+
 <p>因此端口传递函数为</p>
-<h1 id="mathbf-H-s"><a href="#mathbf-H-s" class="headerlink" title="[\mathbf H(s)"></a>[<br>\mathbf H(s)</h1><p>\mathbf L^T<br>(\mathbf G+s\mathbf C)^{-1}<br>\mathbf B.<br>]</p>
-<p>对于一个 (p) 端口电路，</p>
-<p>[<br>\mathbf H(s)\in\mathbb R^{p\times p}.<br>]</p>
-<p>这里的 (p\times p) 是端口传递矩阵的维度，并不是降阶状态矩阵的维度。</p>
+<div class="math-display">
+\[
+\mathbf H(s)
+=
+\mathbf L^T
+(\mathbf G+s\mathbf C)^{-1}
+\mathbf B.
+\]
+</div>
+
+<p>对于一个 $p$ 端口电路，</p>
+<div class="math-display">
+\[
+\mathbf H(s)\in\mathbb R^{p\times p}.
+\]
+</div>
+
+<p>这里的 $p\times p$ 是端口传递矩阵的维度，并不是降阶状态矩阵的维度。</p>
 <hr>
-<h1 id="2-PRIMA-的基本投影过程"><a href="#2-PRIMA-的基本投影过程" class="headerlink" title="2. PRIMA 的基本投影过程"></a>2. PRIMA 的基本投影过程</h1><p>PRIMA 构造一个低维投影基</p>
-<p>[<br>\mathbf V\in\mathbb R^{n\times r},<br>\qquad<br>r\ll n,<br>]</p>
-<p>并用低维状态 (\mathbf x_r(t)\in\mathbb R^r) 近似原始状态：</p>
-<p>[<br>\boxed{<br>\mathbf x(t)\approx\mathbf V\mathbf x_r(t)<br>}<br>]</p>
+<h2 id="2-PRIMA-的基本投影过程"><a href="#2-PRIMA-的基本投影过程" class="headerlink" title="2. PRIMA 的基本投影过程"></a>2. PRIMA 的基本投影过程</h2><p>PRIMA 构造一个低维投影基</p>
+<div class="math-display">
+\[
+\mathbf V\in\mathbb R^{n\times r},
+\qquad
+r\ll n,
+\]
+</div>
+
+<p>并用低维状态 $\mathbf x_r(t)\in\mathbb R^r$ 近似原始状态：</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf x(t)\approx\mathbf V\mathbf x_r(t)
+}
+\]
+</div>
+
 <p>将其代入原始系统：</p>
-<h1 id="mathbf-C-mathbf-V-dot-mathbf-x-r-mathbf-G-mathbf-V-mathbf-x-r"><a href="#mathbf-C-mathbf-V-dot-mathbf-x-r-mathbf-G-mathbf-V-mathbf-x-r" class="headerlink" title="[\mathbf C\mathbf V\dot{\mathbf x}_r+\mathbf G\mathbf V\mathbf x_r"></a>[<br>\mathbf C\mathbf V\dot{\mathbf x}_r<br>+<br>\mathbf G\mathbf V\mathbf x_r</h1><p>\mathbf B\mathbf u.<br>]</p>
-<p>再左乘 (\mathbf V^T)，得到降阶系统：</p>
-<h1 id="mathbf-V-T-mathbf-C-mathbf-V-dot-mathbf-x-r-mathbf-V-T-mathbf-G-mathbf-V-mathbf-x-r"><a href="#mathbf-V-T-mathbf-C-mathbf-V-dot-mathbf-x-r-mathbf-V-T-mathbf-G-mathbf-V-mathbf-x-r" class="headerlink" title="[\mathbf V^T\mathbf C\mathbf V\dot{\mathbf x}_r+\mathbf V^T\mathbf G\mathbf V\mathbf x_r"></a>[<br>\mathbf V^T\mathbf C\mathbf V\dot{\mathbf x}_r<br>+<br>\mathbf V^T\mathbf G\mathbf V\mathbf x_r</h1><p>\mathbf V^T\mathbf B\mathbf u.<br>]</p>
+<div class="math-display">
+\[
+\mathbf C\mathbf V\dot{\mathbf x}_r
++
+\mathbf G\mathbf V\mathbf x_r
+=
+\mathbf B\mathbf u.
+\]
+</div>
+
+<p>再左乘 $\mathbf V^T$，得到降阶系统：</p>
+<div class="math-display">
+\[
+\mathbf V^T\mathbf C\mathbf V\dot{\mathbf x}_r
++
+\mathbf V^T\mathbf G\mathbf V\mathbf x_r
+=
+\mathbf V^T\mathbf B\mathbf u.
+\]
+</div>
+
 <p>定义</p>
-<h1 id="mathbf-C-r"><a href="#mathbf-C-r" class="headerlink" title="[\mathbf C_r"></a>[<br>\mathbf C_r</h1><p>\mathbf V^T\mathbf C\mathbf V,<br>]</p>
-<h1 id="mathbf-G-r"><a href="#mathbf-G-r" class="headerlink" title="[\mathbf G_r"></a>[<br>\mathbf G_r</h1><p>\mathbf V^T\mathbf G\mathbf V,<br>]</p>
-<h1 id="mathbf-B-r"><a href="#mathbf-B-r" class="headerlink" title="[\mathbf B_r"></a>[<br>\mathbf B_r</h1><p>\mathbf V^T\mathbf B,<br>]</p>
-<h1 id="mathbf-L-r"><a href="#mathbf-L-r" class="headerlink" title="[\mathbf L_r"></a>[<br>\mathbf L_r</h1><p>\mathbf V^T\mathbf L,<br>]</p>
+<div class="math-display">
+\[
+\mathbf C_r
+=
+\mathbf V^T\mathbf C\mathbf V,
+\]
+</div>
+
+<div class="math-display">
+\[
+\mathbf G_r
+=
+\mathbf V^T\mathbf G\mathbf V,
+\]
+</div>
+
+<div class="math-display">
+\[
+\mathbf B_r
+=
+\mathbf V^T\mathbf B,
+\]
+</div>
+
+<div class="math-display">
+\[
+\mathbf L_r
+=
+\mathbf V^T\mathbf L,
+\]
+</div>
+
 <p>则降阶系统为</p>
-<h1 id="boxed-mathbf-C-r-dot-mathbf-x-r-mathbf-G-r-mathbf-x-r"><a href="#boxed-mathbf-C-r-dot-mathbf-x-r-mathbf-G-r-mathbf-x-r" class="headerlink" title="[\boxed{\mathbf C_r\dot{\mathbf x}_r+\mathbf G_r\mathbf x_r"></a>[<br>\boxed{<br>\mathbf C_r\dot{\mathbf x}_r<br>+<br>\mathbf G_r\mathbf x_r</h1><p>\mathbf B_r\mathbf u<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf C_r\dot{\mathbf x}_r
++
+\mathbf G_r\mathbf x_r
+=
+\mathbf B_r\mathbf u
+}
+\]
+</div>
+
 <p>输出为</p>
-<h1 id="boxed-mathbf-y"><a href="#boxed-mathbf-y" class="headerlink" title="[\boxed{\mathbf y"></a>[<br>\boxed{<br>\mathbf y</h1><p>\mathbf L_r^T\mathbf x_r<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf y
+=
+\mathbf L_r^T\mathbf x_r
+}
+\]
+</div>
+
 <p>因为</p>
-<h1 id="mathbf-L-r-T"><a href="#mathbf-L-r-T" class="headerlink" title="[\mathbf L_r^T"></a>[<br>\mathbf L_r^T</h1><p>\mathbf L^T\mathbf V.<br>]</p>
+<div class="math-display">
+\[
+\mathbf L_r^T
+=
+\mathbf L^T\mathbf V.
+\]
+</div>
+
 <p>降阶后的传递函数为</p>
-<h1 id="boxed-mathbf-H-r-s"><a href="#boxed-mathbf-H-r-s" class="headerlink" title="[\boxed{\mathbf H_r(s)"></a>[<br>\boxed{<br>\mathbf H_r(s)</h1><p>\mathbf L_r^T<br>(\mathbf G_r+s\mathbf C_r)^{-1}<br>\mathbf B_r<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf H_r(s)
+=
+\mathbf L_r^T
+(\mathbf G_r+s\mathbf C_r)^{-1}
+\mathbf B_r
+}
+\]
+</div>
+
 <p>PRIMA 的目标是使</p>
-<p>[<br>\mathbf H_r(s)\approx\mathbf H(s)<br>]</p>
+<div class="math-display">
+\[
+\mathbf H_r(s)\approx\mathbf H(s)
+\]
+</div>
+
 <p>在目标频率范围内具有较高精度。</p>
 <hr>
-<h1 id="3-降阶状态为什么不再对应实际节点"><a href="#3-降阶状态为什么不再对应实际节点" class="headerlink" title="3. 降阶状态为什么不再对应实际节点"></a>3. 降阶状态为什么不再对应实际节点</h1><h2 id="3-1-降阶状态是原始节点电压的线性组合"><a href="#3-1-降阶状态是原始节点电压的线性组合" class="headerlink" title="3.1 降阶状态是原始节点电压的线性组合"></a>3.1 降阶状态是原始节点电压的线性组合</h2><p>假设原始电路有三个节点：</p>
-<p>[<br>\mathbf x&#x3D;<br>\begin{bmatrix}<br>v_1\<br>v_2\<br>v_3<br>\end{bmatrix}.<br>]</p>
+<h2 id="3-降阶状态为什么不再对应实际节点"><a href="#3-降阶状态为什么不再对应实际节点" class="headerlink" title="3. 降阶状态为什么不再对应实际节点"></a>3. 降阶状态为什么不再对应实际节点</h2><h3 id="3-1-降阶状态是原始节点电压的线性组合"><a href="#3-1-降阶状态是原始节点电压的线性组合" class="headerlink" title="3.1 降阶状态是原始节点电压的线性组合"></a>3.1 降阶状态是原始节点电压的线性组合</h3><p>假设原始电路有三个节点：</p>
+<div class="math-display">
+\[
+\mathbf x=
+\begin{bmatrix}
+v_1\\
+v_2\\
+v_3
+\end{bmatrix}.
+\]
+</div>
+
 <p>将系统降到两阶，假设投影矩阵为</p>
-<p>[<br>\mathbf V&#x3D;<br>\begin{bmatrix}<br>0.8&amp;0.1\<br>0.5&amp;-0.7\<br>0.2&amp;0.7<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf V=
+\begin{bmatrix}
+0.8&0.1\\
+0.5&-0.7\\
+0.2&0.7
+\end{bmatrix}.
+\]
+</div>
+
 <p>那么</p>
-<p>[<br>\begin{bmatrix}<br>v_1\<br>v_2\<br>v_3<br>\end{bmatrix}<br>\approx<br>\begin{bmatrix}<br>0.8&amp;0.1\<br>0.5&amp;-0.7\<br>0.2&amp;0.7<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_{r,1}\<br>x_{r,2}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\begin{bmatrix}
+v_1\\
+v_2\\
+v_3
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+0.8&0.1\\
+0.5&-0.7\\
+0.2&0.7
+\end{bmatrix}
+\begin{bmatrix}
+x_{r,1}\\
+x_{r,2}
+\end{bmatrix}.
+\]
+</div>
+
 <p>展开后为</p>
-<p>[<br>v_1<br>\approx<br>0.8x_{r,1}<br>+<br>0.1x_{r,2},<br>]</p>
-<h2 id="v-2-approx0-5x-r-1"><a href="#v-2-approx0-5x-r-1" class="headerlink" title="[v_2\approx0.5x_{r,1}"></a>[<br>v_2<br>\approx<br>0.5x_{r,1}</h2><p>0.7x_{r,2},<br>]</p>
-<p>[<br>v_3<br>\approx<br>0.2x_{r,1}<br>+<br>0.7x_{r,2}.<br>]</p>
-<p>这里的 (x_{r,1}) 和 (x_{r,2}) 并不对应两个实际节点。</p>
+<div class="math-display">
+\[
+v_1
+\approx
+0.8x_{r,1}
++
+0.1x_{r,2},
+\]
+</div>
+
+<div class="math-display">
+\[
+v_2
+\approx
+0.5x_{r,1}
+-
+0.7x_{r,2},
+\]
+</div>
+
+<div class="math-display">
+\[
+v_3
+\approx
+0.2x_{r,1}
++
+0.7x_{r,2}.
+\]
+</div>
+
+<p>这里的 $x_{r,1}$ 和 $x_{r,2}$ 并不对应两个实际节点。</p>
 <p>它们是原始节点电压在投影子空间中的坐标，因此：</p>
-<p>[<br>\boxed{<br>x_{r,i}<br>\text{ 一般不是某个原始节点的电压}<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+x_{r,i}
+\text{ 一般不是某个原始节点的电压}
+}
+\]
+</div>
+
 <p>而是多个原始节点状态混合后的数学变量。</p>
 <p>因此，不能直接把降阶状态解释为：</p>
 <ul>
@@ -163,41 +389,112 @@
 <li>降阶矩阵中的某个元素对应原电路中的某只电阻或电容。</li>
 </ul>
 <hr>
-<h1 id="4-为什么-PRIMA-降阶模型通常不能直接映射回普通-RC-电路"><a href="#4-为什么-PRIMA-降阶模型通常不能直接映射回普通-RC-电路" class="headerlink" title="4. 为什么 PRIMA 降阶模型通常不能直接映射回普通 RC 电路"></a>4. 为什么 PRIMA 降阶模型通常不能直接映射回普通 RC 电路</h1><p>这里所说的“不能映射回实际电路”，更准确地说是：</p>
+<h2 id="4-为什么-PRIMA-降阶模型通常不能直接映射回普通-RC-电路"><a href="#4-为什么-PRIMA-降阶模型通常不能直接映射回普通-RC-电路" class="headerlink" title="4. 为什么 PRIMA 降阶模型通常不能直接映射回普通 RC 电路"></a>4. 为什么 PRIMA 降阶模型通常不能直接映射回普通 RC 电路</h2><p>这里所说的“不能映射回实际电路”，更准确地说是：</p>
 <blockquote>
 <p>PRIMA 得到的降阶矩阵通常不能直接解释为一个由普通正电阻、正电容和明确节点拓扑组成的缩小版 RC 网表。</p>
 </blockquote>
 <p>这并不意味着降阶模型不能仿真。</p>
 <hr>
-<h2 id="4-1-降阶状态失去节点物理意义"><a href="#4-1-降阶状态失去节点物理意义" class="headerlink" title="4.1 降阶状态失去节点物理意义"></a>4.1 降阶状态失去节点物理意义</h2><p>原始状态中的每个变量通常对应某个节点电压：</p>
-<p>[<br>x_i&#x3D;v_i.<br>]</p>
+<h3 id="4-1-降阶状态失去节点物理意义"><a href="#4-1-降阶状态失去节点物理意义" class="headerlink" title="4.1 降阶状态失去节点物理意义"></a>4.1 降阶状态失去节点物理意义</h3><p>原始状态中的每个变量通常对应某个节点电压：</p>
+<div class="math-display">
+\[
+x_i=v_i.
+\]
+</div>
+
 <p>但是降阶后</p>
-<p>[<br>\mathbf x\approx\mathbf V\mathbf x_r,<br>]</p>
+<div class="math-display">
+\[
+\mathbf x\approx\mathbf V\mathbf x_r,
+\]
+</div>
+
 <p>每个降阶状态都是多个原始节点状态的混合。</p>
 <p>因此，降阶状态空间不再和原电路节点一一对应。</p>
 <hr>
-<h2 id="4-2-普通-RC-电导矩阵具有特殊符号结构"><a href="#4-2-普通-RC-电导矩阵具有特殊符号结构" class="headerlink" title="4.2 普通 RC 电导矩阵具有特殊符号结构"></a>4.2 普通 RC 电导矩阵具有特殊符号结构</h2><p>对于由正电阻组成的 RC 电路，电导矩阵通常满足</p>
-<p>[<br>G_{ii}&gt;0,<br>]</p>
-<p>[<br>G_{ij}\leq 0,<br>\qquad i\ne j.<br>]</p>
-<p>例如，节点 (i) 和节点 (j) 之间存在电导 (g_{ij}&gt;0)，其对矩阵的贡献为</p>
-<p>[<br>\begin{bmatrix}<br>g_{ij}&amp;-g_{ij}\<br>-g_{ij}&amp;g_{ij}<br>\end{bmatrix}.<br>]</p>
+<h3 id="4-2-普通-RC-电导矩阵具有特殊符号结构"><a href="#4-2-普通-RC-电导矩阵具有特殊符号结构" class="headerlink" title="4.2 普通 RC 电导矩阵具有特殊符号结构"></a>4.2 普通 RC 电导矩阵具有特殊符号结构</h3><p>对于由正电阻组成的 RC 电路，电导矩阵通常满足</p>
+<div class="math-display">
+\[
+G_{ii}>0,
+\]
+</div>
+
+<div class="math-display">
+\[
+G_{ij}\leq 0,
+\qquad i\ne j.
+\]
+</div>
+
+<p>例如，节点 $i$ 和节点 $j$ 之间存在电导 $g_{ij}&gt;0$，其对矩阵的贡献为</p>
+<div class="math-display">
+\[
+\begin{bmatrix}
+g_{ij}&-g_{ij}\\
+-g_{ij}&g_{ij}
+\end{bmatrix}.
+\]
+</div>
+
 <p>因此，普通电阻网络中的非对角元素通常是非正的。</p>
 <p>但是 PRIMA 投影后的矩阵为</p>
-<h1 id="mathbf-G-r-1"><a href="#mathbf-G-r-1" class="headerlink" title="[\mathbf G_r"></a>[<br>\mathbf G_r</h1><p>\mathbf V^T\mathbf G\mathbf V.<br>]</p>
+<div class="math-display">
+\[
+\mathbf G_r
+=
+\mathbf V^T\mathbf G\mathbf V.
+\]
+</div>
+
 <p>其中每个元素都是原始电路大量矩阵元素的混合：</p>
-<h1 id="G-r-ij"><a href="#G-r-ij" class="headerlink" title="[(G_r)_{ij}"></a>[<br>(G_r)_{ij}</h1><p>\mathbf v_i^T\mathbf G\mathbf v_j.<br>]</p>
+<div class="math-display">
+\[
+(G_r)_{ij}
+=
+\mathbf v_i^T\mathbf G\mathbf v_j.
+\]
+</div>
+
 <p>它可能产生如下矩阵：</p>
-<p>[<br>\mathbf G_r&#x3D;<br>\begin{bmatrix}<br>2.1&amp;0.3\<br>0.3&amp;1.7<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf G_r=
+\begin{bmatrix}
+2.1&0.3\\
+0.3&1.7
+\end{bmatrix}.
+\]
+</div>
+
 <p>这里非对角元素为正，不能直接解释为两个普通节点之间的一只正电阻。</p>
-<p>(\mathbf C_r) 也存在类似问题。</p>
+<p>$\mathbf C_r$ 也存在类似问题。</p>
 <hr>
-<h2 id="4-3-投影后矩阵通常变得稠密"><a href="#4-3-投影后矩阵通常变得稠密" class="headerlink" title="4.3 投影后矩阵通常变得稠密"></a>4.3 投影后矩阵通常变得稠密</h2><p>原始 RC 电路具有局部连接关系，所以</p>
-<p>[<br>\mathbf G,\mathbf C<br>]</p>
+<h3 id="4-3-投影后矩阵通常变得稠密"><a href="#4-3-投影后矩阵通常变得稠密" class="headerlink" title="4.3 投影后矩阵通常变得稠密"></a>4.3 投影后矩阵通常变得稠密</h3><p>原始 RC 电路具有局部连接关系，所以</p>
+<div class="math-display">
+\[
+\mathbf G,\mathbf C
+\]
+</div>
+
 <p>通常非常稀疏。</p>
 <p>但经过投影</p>
-<h1 id="mathbf-G-r-2"><a href="#mathbf-G-r-2" class="headerlink" title="[\mathbf G_r"></a>[<br>\mathbf G_r</h1><p>\mathbf V^T\mathbf G\mathbf V,<br>]</p>
-<h1 id="mathbf-C-r-1"><a href="#mathbf-C-r-1" class="headerlink" title="[\mathbf C_r"></a>[<br>\mathbf C_r</h1><p>\mathbf V^T\mathbf C\mathbf V,<br>]</p>
-<p>得到的 (\mathbf G_r,\mathbf C_r) 通常是稠密矩阵。</p>
+<div class="math-display">
+\[
+\mathbf G_r
+=
+\mathbf V^T\mathbf G\mathbf V,
+\]
+</div>
+
+<div class="math-display">
+\[
+\mathbf C_r
+=
+\mathbf V^T\mathbf C\mathbf V,
+\]
+</div>
+
+<p>得到的 $\mathbf G_r,\mathbf C_r$ 通常是稠密矩阵。</p>
 <p>这意味着几乎每个降阶状态都和其他状态发生耦合。</p>
 <p>如果强行把这种矩阵实现为网表，可能需要：</p>
 <ul>
@@ -208,204 +505,842 @@
 <li>行为级元件；</li>
 <li>状态空间模块。</li>
 </ul>
-<p>因此它一般不是简单的、仅由少量普通 (R) 和 (C) 元件组成的电路。</p>
+<p>因此它一般不是简单的、仅由少量普通 $R$ 和 $C$ 元件组成的电路。</p>
 <hr>
-<h2 id="4-4-保持无源不等于可以直接解释为普通-RC-网表"><a href="#4-4-保持无源不等于可以直接解释为普通-RC-网表" class="headerlink" title="4.4 保持无源不等于可以直接解释为普通 RC 网表"></a>4.4 保持无源不等于可以直接解释为普通 RC 网表</h2><p>如果原始系统满足</p>
-<p>[<br>\mathbf G\succeq0,<br>\qquad<br>\mathbf C\succeq0,<br>]</p>
+<h3 id="4-4-保持无源不等于可以直接解释为普通-RC-网表"><a href="#4-4-保持无源不等于可以直接解释为普通-RC-网表" class="headerlink" title="4.4 保持无源不等于可以直接解释为普通 RC 网表"></a>4.4 保持无源不等于可以直接解释为普通 RC 网表</h3><p>如果原始系统满足</p>
+<div class="math-display">
+\[
+\mathbf G\succeq0,
+\qquad
+\mathbf C\succeq0,
+\]
+</div>
+
 <p>则 PRIMA 的合同投影可以保证</p>
-<p>[<br>\mathbf G_r\succeq0,<br>\qquad<br>\mathbf C_r\succeq0.<br>]</p>
-<p>因为对于任意向量 (\mathbf z)，</p>
-<h1 id="mathbf-z-T-mathbf-G-r-mathbf-z"><a href="#mathbf-z-T-mathbf-G-r-mathbf-z" class="headerlink" title="[\mathbf z^T\mathbf G_r\mathbf z"></a>[<br>\mathbf z^T\mathbf G_r\mathbf z</h1><p>(\mathbf V\mathbf z)^T<br>\mathbf G<br>(\mathbf V\mathbf z)<br>\geq0.<br>]</p>
+<div class="math-display">
+\[
+\mathbf G_r\succeq0,
+\qquad
+\mathbf C_r\succeq0.
+\]
+</div>
+
+<p>因为对于任意向量 $\mathbf z$，</p>
+<div class="math-display">
+\[
+\mathbf z^T\mathbf G_r\mathbf z
+=
+(\mathbf V\mathbf z)^T
+\mathbf G
+(\mathbf V\mathbf z)
+\geq0.
+\]
+</div>
+
 <p>这说明降阶系统从整体能量角度仍然是无源的。</p>
 <p>但是</p>
-<p>[<br>\mathbf G_r\succeq0<br>]</p>
-<p>并不意味着 (\mathbf G_r) 中的每个元素都可以解释为普通电阻。</p>
+<div class="math-display">
+\[
+\mathbf G_r\succeq0
+\]
+</div>
+
+<p>并不意味着 $\mathbf G_r$ 中的每个元素都可以解释为普通电阻。</p>
 <p>因此：</p>
-<p>[<br>\boxed{<br>\text{系统保持无源}<br>\neq<br>\text{矩阵可以直接映射为普通 RC 拓扑}<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\text{系统保持无源}
+\neq
+\text{矩阵可以直接映射为普通 RC 拓扑}
+}
+\]
+</div>
+
 <hr>
-<h1 id="5-一个-10-端口、90-个内部节点的例子"><a href="#5-一个-10-端口、90-个内部节点的例子" class="headerlink" title="5. 一个 10 端口、90 个内部节点的例子"></a>5. 一个 10 端口、90 个内部节点的例子</h1><p>考虑一个电路：</p>
+<h2 id="5-一个-10-端口、90-个内部节点的例子"><a href="#5-一个-10-端口、90-个内部节点的例子" class="headerlink" title="5. 一个 10 端口、90 个内部节点的例子"></a>5. 一个 10 端口、90 个内部节点的例子</h2><p>考虑一个电路：</p>
 <ul>
 <li>10 个端口节点；</li>
 <li>90 个内部节点；</li>
 <li>共 100 个节点。</li>
 </ul>
 <p>将节点电压排列为</p>
-<h1 id="mathbf-x"><a href="#mathbf-x" class="headerlink" title="[\mathbf x"></a>[<br>\mathbf x</h1><h1 id="begin-bmatrix-mathbf-v-p-mathbf-v-i-end-bmatrix"><a href="#begin-bmatrix-mathbf-v-p-mathbf-v-i-end-bmatrix" class="headerlink" title="\begin{bmatrix}\mathbf v_p\\mathbf v_i\end{bmatrix}"></a>\begin{bmatrix}<br>\mathbf v_p\<br>\mathbf v_i<br>\end{bmatrix}</h1><p>\begin{bmatrix}<br>v_{p,1}\<br>\vdots\<br>v_{p,10}\<br>v_{i,1}\<br>\vdots\<br>v_{i,90}<br>\end{bmatrix}<br>\in\mathbb R^{100}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf x
+=
+\begin{bmatrix}
+\mathbf v_p\\
+\mathbf v_i
+\end{bmatrix}
+=
+\begin{bmatrix}
+v_{p,1}\\
+\vdots\\
+v_{p,10}\\
+v_{i,1}\\
+\vdots\\
+v_{i,90}
+\end{bmatrix}
+\in\mathbb R^{100}.
+\]
+</div>
+
 <p>其中：</p>
-<p>[<br>\mathbf v_p\in\mathbb R^{10}<br>]</p>
+<div class="math-display">
+\[
+\mathbf v_p\in\mathbb R^{10}
+\]
+</div>
+
 <p>是端口节点电压，</p>
-<p>[<br>\mathbf v_i\in\mathbb R^{90}<br>]</p>
+<div class="math-display">
+\[
+\mathbf v_i\in\mathbb R^{90}
+\]
+</div>
+
 <p>是内部节点电压。</p>
 <p>原始系统为</p>
-<h1 id="mathbf-C-dot-mathbf-x-mathbf-G-mathbf-x"><a href="#mathbf-C-dot-mathbf-x-mathbf-G-mathbf-x" class="headerlink" title="[\mathbf C\dot{\mathbf x}+\mathbf G\mathbf x"></a>[<br>\mathbf C\dot{\mathbf x}<br>+<br>\mathbf G\mathbf x</h1><p>\mathbf B\mathbf u.<br>]</p>
+<div class="math-display">
+\[
+\mathbf C\dot{\mathbf x}
++
+\mathbf G\mathbf x
+=
+\mathbf B\mathbf u.
+\]
+</div>
+
 <p>假设端口输入是十个端口上的注入电流：</p>
-<h1 id="mathbf-u"><a href="#mathbf-u" class="headerlink" title="[\mathbf u"></a>[<br>\mathbf u</h1><p>\begin{bmatrix}<br>i_1\<br>i_2\<br>\vdots\<br>i_{10}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf u
+=
+\begin{bmatrix}
+i_1\\
+i_2\\
+\vdots\\
+i_{10}
+\end{bmatrix}.
+\]
+</div>
+
 <hr>
-<h1 id="6-输入矩阵-mathbf-B-如何保存端口编号"><a href="#6-输入矩阵-mathbf-B-如何保存端口编号" class="headerlink" title="6. 输入矩阵 (\mathbf B) 如何保存端口编号"></a>6. 输入矩阵 (\mathbf B) 如何保存端口编号</h1><p>如果前十个节点就是端口节点，则可以定义</p>
-<h1 id="mathbf-B"><a href="#mathbf-B" class="headerlink" title="[\mathbf B"></a>[<br>\mathbf B</h1><p>\begin{bmatrix}<br>\mathbf I_{10}\<br>\mathbf 0_{90\times10}<br>\end{bmatrix}.<br>]</p>
+<h2 id="6-输入矩阵-mathbf-B-如何保存端口编号"><a href="#6-输入矩阵-mathbf-B-如何保存端口编号" class="headerlink" title="6. 输入矩阵 $\mathbf B$ 如何保存端口编号"></a>6. 输入矩阵 $\mathbf B$ 如何保存端口编号</h2><p>如果前十个节点就是端口节点，则可以定义</p>
+<div class="math-display">
+\[
+\mathbf B
+=
+\begin{bmatrix}
+\mathbf I_{10}\\
+\mathbf 0_{90\times10}
+\end{bmatrix}.
+\]
+</div>
+
 <p>其中：</p>
 <ul>
-<li>(\mathbf B) 的第 1 列表示在端口 1 注入电流；</li>
-<li>(\mathbf B) 的第 2 列表示在端口 2 注入电流；</li>
-<li>(\cdots)</li>
-<li>(\mathbf B) 的第 10 列表示在端口 10 注入电流。</li>
+<li>$\mathbf B$ 的第 1 列表示在端口 1 注入电流；</li>
+<li>$\mathbf B$ 的第 2 列表示在端口 2 注入电流；</li>
+<li>$\cdots$</li>
+<li>$\mathbf B$ 的第 10 列表示在端口 10 注入电流。</li>
 </ul>
 <p>因此：</p>
-<p>[<br>\boxed{<br>\mathbf B\text{ 的列顺序保存了输入端口的编号}<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf B\text{ 的列顺序保存了输入端口的编号}
+}
+\]
+</div>
+
 <p>即使进行降阶，输入端口的顺序也不会被打乱。</p>
 <p>降阶后的输入矩阵为</p>
-<h1 id="mathbf-B-r-1"><a href="#mathbf-B-r-1" class="headerlink" title="[\mathbf B_r"></a>[<br>\mathbf B_r</h1><p>\mathbf V^T\mathbf B.<br>]</p>
-<p>虽然 (\mathbf B_r) 的每一列变成了对降阶状态的激励方式，但：</p>
+<div class="math-display">
+\[
+\mathbf B_r
+=
+\mathbf V^T\mathbf B.
+\]
+</div>
+
+<p>虽然 $\mathbf B_r$ 的每一列变成了对降阶状态的激励方式，但：</p>
 <ul>
 <li>第 1 列仍然对应原始端口 1；</li>
 <li>第 2 列仍然对应原始端口 2；</li>
-<li>(\cdots)</li>
+<li>$\cdots$</li>
 <li>第 10 列仍然对应原始端口 10。</li>
 </ul>
 <hr>
-<h1 id="7-输出矩阵-mathbf-L-如何保存端口编号"><a href="#7-输出矩阵-mathbf-L-如何保存端口编号" class="headerlink" title="7. 输出矩阵 (\mathbf L) 如何保存端口编号"></a>7. 输出矩阵 (\mathbf L) 如何保存端口编号</h1><p>如果输出是十个端口节点电压，则定义</p>
-<h1 id="mathbf-y"><a href="#mathbf-y" class="headerlink" title="[\mathbf y"></a>[<br>\mathbf y</h1><p>\begin{bmatrix}<br>v_{p,1}\<br>v_{p,2}\<br>\vdots\<br>v_{p,10}<br>\end{bmatrix}.<br>]</p>
+<h2 id="7-输出矩阵-mathbf-L-如何保存端口编号"><a href="#7-输出矩阵-mathbf-L-如何保存端口编号" class="headerlink" title="7. 输出矩阵 $\mathbf L$ 如何保存端口编号"></a>7. 输出矩阵 $\mathbf L$ 如何保存端口编号</h2><p>如果输出是十个端口节点电压，则定义</p>
+<div class="math-display">
+\[
+\mathbf y
+=
+\begin{bmatrix}
+v_{p,1}\\
+v_{p,2}\\
+\vdots\\
+v_{p,10}
+\end{bmatrix}.
+\]
+</div>
+
 <p>输出方程为</p>
-<h1 id="mathbf-y-1"><a href="#mathbf-y-1" class="headerlink" title="[\mathbf y"></a>[<br>\mathbf y</h1><p>\mathbf L^T\mathbf x.<br>]</p>
+<div class="math-display">
+\[
+\mathbf y
+=
+\mathbf L^T\mathbf x.
+\]
+</div>
+
 <p>如果前十个状态对应十个端口节点，则可以取</p>
-<h1 id="mathbf-L"><a href="#mathbf-L" class="headerlink" title="[\mathbf L"></a>[<br>\mathbf L</h1><p>\begin{bmatrix}<br>\mathbf I_{10}\<br>\mathbf 0_{90\times10}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf L
+=
+\begin{bmatrix}
+\mathbf I_{10}\\
+\mathbf 0_{90\times10}
+\end{bmatrix}.
+\]
+</div>
+
 <p>于是</p>
-<h1 id="mathbf-L-T-mathbf-x"><a href="#mathbf-L-T-mathbf-x" class="headerlink" title="[\mathbf L^T\mathbf x"></a>[<br>\mathbf L^T\mathbf x</h1><h1 id="begin-bmatrix-mathbf-I-10-mathbf-0-end-bmatrix-begin-bmatrix-mathbf-v-p-mathbf-v-i-end-bmatrix"><a href="#begin-bmatrix-mathbf-I-10-mathbf-0-end-bmatrix-begin-bmatrix-mathbf-v-p-mathbf-v-i-end-bmatrix" class="headerlink" title="\begin{bmatrix}\mathbf I_{10}&amp;\mathbf 0\end{bmatrix}\begin{bmatrix}\mathbf v_p\\mathbf v_i\end{bmatrix}"></a>\begin{bmatrix}<br>\mathbf I_{10}&amp;\mathbf 0<br>\end{bmatrix}<br>\begin{bmatrix}<br>\mathbf v_p\<br>\mathbf v_i<br>\end{bmatrix}</h1><p>\mathbf v_p.<br>]</p>
+<div class="math-display">
+\[
+\mathbf L^T\mathbf x
+=
+\begin{bmatrix}
+\mathbf I_{10}&\mathbf 0
+\end{bmatrix}
+\begin{bmatrix}
+\mathbf v_p\\
+\mathbf v_i
+\end{bmatrix}
+=
+\mathbf v_p.
+\]
+</div>
+
 <p>因此</p>
-<p>[<br>y_1&#x3D;v_{p,1},<br>]</p>
-<p>[<br>y_2&#x3D;v_{p,2},<br>]</p>
-<p>[<br>\cdots<br>]</p>
-<p>[<br>y_{10}&#x3D;v_{p,10}.<br>]</p>
+<div class="math-display">
+\[
+y_1=v_{p,1},
+\]
+</div>
+
+<div class="math-display">
+\[
+y_2=v_{p,2},
+\]
+</div>
+
+<div class="math-display">
+\[
+\cdots
+\]
+</div>
+
+<div class="math-display">
+\[
+y_{10}=v_{p,10}.
+\]
+</div>
+
 <p>所以：</p>
-<p>[<br>\boxed{<br>\mathbf L\text{ 的列顺序保存了输出端口的编号}<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf L\text{ 的列顺序保存了输出端口的编号}
+}
+\]
+</div>
+
 <hr>
-<h1 id="8-降阶后如何计算十个端口的输出"><a href="#8-降阶后如何计算十个端口的输出" class="headerlink" title="8. 降阶后如何计算十个端口的输出"></a>8. 降阶后如何计算十个端口的输出</h1><p>PRIMA 使用</p>
-<p>[<br>\mathbf x<br>\approx<br>\mathbf V\mathbf x_r.<br>]</p>
+<h2 id="8-降阶后如何计算十个端口的输出"><a href="#8-降阶后如何计算十个端口的输出" class="headerlink" title="8. 降阶后如何计算十个端口的输出"></a>8. 降阶后如何计算十个端口的输出</h2><p>PRIMA 使用</p>
+<div class="math-display">
+\[
+\mathbf x
+\approx
+\mathbf V\mathbf x_r.
+\]
+</div>
+
 <p>原始输出为</p>
-<h1 id="mathbf-y-2"><a href="#mathbf-y-2" class="headerlink" title="[\mathbf y"></a>[<br>\mathbf y</h1><p>\mathbf L^T\mathbf x.<br>]</p>
+<div class="math-display">
+\[
+\mathbf y
+=
+\mathbf L^T\mathbf x.
+\]
+</div>
+
 <p>代入后得到</p>
-<p>[<br>\mathbf y<br>\approx<br>\mathbf L^T\mathbf V\mathbf x_r.<br>]</p>
+<div class="math-display">
+\[
+\mathbf y
+\approx
+\mathbf L^T\mathbf V\mathbf x_r.
+\]
+</div>
+
 <p>定义</p>
-<h1 id="mathbf-L-r-1"><a href="#mathbf-L-r-1" class="headerlink" title="[\mathbf L_r"></a>[<br>\mathbf L_r</h1><p>\mathbf V^T\mathbf L,<br>]</p>
+<div class="math-display">
+\[
+\mathbf L_r
+=
+\mathbf V^T\mathbf L,
+\]
+</div>
+
 <p>则</p>
-<h1 id="boxed-mathbf-y-1"><a href="#boxed-mathbf-y-1" class="headerlink" title="[\boxed{\mathbf y"></a>[<br>\boxed{<br>\mathbf y</h1><p>\mathbf L_r^T\mathbf x_r<br>}<br>]</p>
-<p>虽然 (\mathbf x_r) 中的某个状态不再对应某个实际端口，但是输出向量仍然是</p>
-<h1 id="mathbf-y-3"><a href="#mathbf-y-3" class="headerlink" title="[\mathbf y"></a>[<br>\mathbf y</h1><p>\begin{bmatrix}<br>y_1\<br>y_2\<br>\vdots\<br>y_{10}<br>\end{bmatrix}<br>\approx<br>\begin{bmatrix}<br>v_{p,1}\<br>v_{p,2}\<br>\vdots\<br>v_{p,10}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf y
+=
+\mathbf L_r^T\mathbf x_r
+}
+\]
+</div>
+
+<p>虽然 $\mathbf x_r$ 中的某个状态不再对应某个实际端口，但是输出向量仍然是</p>
+<div class="math-display">
+\[
+\mathbf y
+=
+\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_{10}
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+v_{p,1}\\
+v_{p,2}\\
+\vdots\\
+v_{p,10}
+\end{bmatrix}.
+\]
+</div>
+
 <p>因此：</p>
-<p>[<br>\boxed{<br>y_i\text{ 仍然对应原始电路的第 }i\text{ 个端口输出}<br>}<br>]</p>
-<p>端口的对应关系并不是通过某个降阶状态保存的，而是通过输出矩阵 (\mathbf L_r) 保存的。</p>
+<div class="math-display">
+\[
+\boxed{
+y_i\text{ 仍然对应原始电路的第 }i\text{ 个端口输出}
+}
+\]
+</div>
+
+<p>端口的对应关系并不是通过某个降阶状态保存的，而是通过输出矩阵 $\mathbf L_r$ 保存的。</p>
 <hr>
-<h1 id="9-一个两端口缩小例子"><a href="#9-一个两端口缩小例子" class="headerlink" title="9. 一个两端口缩小例子"></a>9. 一个两端口缩小例子</h1><p>假设原始系统有：</p>
+<h2 id="9-一个两端口缩小例子"><a href="#9-一个两端口缩小例子" class="headerlink" title="9. 一个两端口缩小例子"></a>9. 一个两端口缩小例子</h2><p>假设原始系统有：</p>
 <ul>
 <li>2 个端口；</li>
 <li>3 个内部节点；</li>
 <li>共 5 个节点。</li>
 </ul>
 <p>原始状态为</p>
-<h1 id="mathbf-x-1"><a href="#mathbf-x-1" class="headerlink" title="[\mathbf x"></a>[<br>\mathbf x</h1><p>\begin{bmatrix}<br>v_{p,1}\<br>v_{p,2}\<br>v_3\<br>v_4\<br>v_5<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf x
+=
+\begin{bmatrix}
+v_{p,1}\\
+v_{p,2}\\
+v_3\\
+v_4\\
+v_5
+\end{bmatrix}.
+\]
+</div>
+
 <p>输出选择矩阵为</p>
-<h1 id="mathbf-L-1"><a href="#mathbf-L-1" class="headerlink" title="[\mathbf L"></a>[<br>\mathbf L</h1><p>\begin{bmatrix}<br>1&amp;0\<br>0&amp;1\<br>0&amp;0\<br>0&amp;0\<br>0&amp;0<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf L
+=
+\begin{bmatrix}
+1&0\\
+0&1\\
+0&0\\
+0&0\\
+0&0
+\end{bmatrix}.
+\]
+</div>
+
 <p>因此</p>
-<h1 id="mathbf-y-4"><a href="#mathbf-y-4" class="headerlink" title="[\mathbf y"></a>[<br>\mathbf y</h1><h1 id="mathbf-L-T-mathbf-x-1"><a href="#mathbf-L-T-mathbf-x-1" class="headerlink" title="\mathbf L^T\mathbf x"></a>\mathbf L^T\mathbf x</h1><p>\begin{bmatrix}<br>v_{p,1}\<br>v_{p,2}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf y
+=
+\mathbf L^T\mathbf x
+=
+\begin{bmatrix}
+v_{p,1}\\
+v_{p,2}
+\end{bmatrix}.
+\]
+</div>
+
 <p>现在将五阶系统降到两阶：</p>
-<p>[<br>\mathbf x<br>\approx<br>\mathbf V\mathbf x_r,<br>]</p>
+<div class="math-display">
+\[
+\mathbf x
+\approx
+\mathbf V\mathbf x_r,
+\]
+</div>
+
 <p>其中</p>
-<h1 id="mathbf-x-r"><a href="#mathbf-x-r" class="headerlink" title="[\mathbf x_r"></a>[<br>\mathbf x_r</h1><p>\begin{bmatrix}<br>x_{r,1}\<br>x_{r,2}<br>\end{bmatrix},<br>]</p>
+<div class="math-display">
+\[
+\mathbf x_r
+=
+\begin{bmatrix}
+x_{r,1}\\
+x_{r,2}
+\end{bmatrix},
+\]
+</div>
+
 <p>假设</p>
-<h1 id="mathbf-V"><a href="#mathbf-V" class="headerlink" title="[\mathbf V"></a>[<br>\mathbf V</h1><p>\begin{bmatrix}<br>0.8&amp;0.1\<br>0.5&amp;-0.7\<br>0.2&amp;0.7\<br>0.3&amp;0.4\<br>-0.1&amp;0.6<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf V
+=
+\begin{bmatrix}
+0.8&0.1\\
+0.5&-0.7\\
+0.2&0.7\\
+0.3&0.4\\
+-0.1&0.6
+\end{bmatrix}.
+\]
+</div>
+
 <p>则端口电压为</p>
-<p>[<br>v_{p,1}<br>\approx<br>0.8x_{r,1}<br>+<br>0.1x_{r,2},<br>]</p>
-<h2 id="v-p-2-approx0-5x-r-1"><a href="#v-p-2-approx0-5x-r-1" class="headerlink" title="[v_{p,2}\approx0.5x_{r,1}"></a>[<br>v_{p,2}<br>\approx<br>0.5x_{r,1}</h2><p>0.7x_{r,2}.<br>]</p>
+<div class="math-display">
+\[
+v_{p,1}
+\approx
+0.8x_{r,1}
++
+0.1x_{r,2},
+\]
+</div>
+
+<div class="math-display">
+\[
+v_{p,2}
+\approx
+0.5x_{r,1}
+-
+0.7x_{r,2}.
+\]
+</div>
+
 <p>计算降阶输出矩阵：</p>
-<h1 id="mathbf-L-r-T-1"><a href="#mathbf-L-r-T-1" class="headerlink" title="[\mathbf L_r^T"></a>[<br>\mathbf L_r^T</h1><p>\mathbf L^T\mathbf V.<br>]</p>
-<p>由于 (\mathbf L) 选择的是原始状态中的前两个端口节点，因此</p>
-<h1 id="mathbf-L-r-T-2"><a href="#mathbf-L-r-T-2" class="headerlink" title="[\mathbf L_r^T"></a>[<br>\mathbf L_r^T</h1><p>\begin{bmatrix}<br>0.8&amp;0.1\<br>0.5&amp;-0.7<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf L_r^T
+=
+\mathbf L^T\mathbf V.
+\]
+</div>
+
+<p>由于 $\mathbf L$ 选择的是原始状态中的前两个端口节点，因此</p>
+<div class="math-display">
+\[
+\mathbf L_r^T
+=
+\begin{bmatrix}
+0.8&0.1\\
+0.5&-0.7
+\end{bmatrix}.
+\]
+</div>
+
 <p>最终输出为</p>
-<p>[<br>\begin{bmatrix}<br>v_{p,1}\<br>v_{p,2}<br>\end{bmatrix}<br>\approx<br>\begin{bmatrix}<br>0.8&amp;0.1\<br>0.5&amp;-0.7<br>\end{bmatrix}<br>\begin{bmatrix}<br>x_{r,1}\<br>x_{r,2}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\begin{bmatrix}
+v_{p,1}\\
+v_{p,2}
+\end{bmatrix}
+\approx
+\begin{bmatrix}
+0.8&0.1\\
+0.5&-0.7
+\end{bmatrix}
+\begin{bmatrix}
+x_{r,1}\\
+x_{r,2}
+\end{bmatrix}.
+\]
+</div>
+
 <p>这里：</p>
 <ul>
 <li>输出向量的第 1 行始终对应端口 1；</li>
 <li>输出向量的第 2 行始终对应端口 2。</li>
 </ul>
-<p>虽然 (x_{r,1}) 和 (x_{r,2}) 没有实际节点含义，但它们的线性组合可以恢复端口输出。</p>
+<p>虽然 $x_{r,1}$ 和 $x_{r,2}$ 没有实际节点含义，但它们的线性组合可以恢复端口输出。</p>
 <hr>
-<h1 id="10-PRIMA-的频域仿真方法"><a href="#10-PRIMA-的频域仿真方法" class="headerlink" title="10. PRIMA 的频域仿真方法"></a>10. PRIMA 的频域仿真方法</h1><p>对于频率</p>
-<p>[<br>s&#x3D;j\omega,<br>]</p>
+<h2 id="10-PRIMA-的频域仿真方法"><a href="#10-PRIMA-的频域仿真方法" class="headerlink" title="10. PRIMA 的频域仿真方法"></a>10. PRIMA 的频域仿真方法</h2><p>对于频率</p>
+<div class="math-display">
+\[
+s=j\omega,
+\]
+</div>
+
 <p>降阶系统满足</p>
-<h1 id="mathbf-G-r-s-mathbf-C-r-mathbf-X-r"><a href="#mathbf-G-r-s-mathbf-C-r-mathbf-X-r" class="headerlink" title="[(\mathbf G_r+s\mathbf C_r)\mathbf X_r"></a>[<br>(\mathbf G_r+s\mathbf C_r)\mathbf X_r</h1><p>\mathbf B_r\mathbf U.<br>]</p>
+<div class="math-display">
+\[
+(\mathbf G_r+s\mathbf C_r)\mathbf X_r
+=
+\mathbf B_r\mathbf U.
+\]
+</div>
+
 <p>首先求解降阶状态：</p>
-<h1 id="mathbf-X-r"><a href="#mathbf-X-r" class="headerlink" title="[\mathbf X_r"></a>[<br>\mathbf X_r</h1><p>(\mathbf G_r+s\mathbf C_r)^{-1}<br>\mathbf B_r\mathbf U.<br>]</p>
+<div class="math-display">
+\[
+\mathbf X_r
+=
+(\mathbf G_r+s\mathbf C_r)^{-1}
+\mathbf B_r\mathbf U.
+\]
+</div>
+
 <p>然后计算端口输出：</p>
-<h1 id="mathbf-Y"><a href="#mathbf-Y" class="headerlink" title="[\mathbf Y"></a>[<br>\mathbf Y</h1><p>\mathbf L_r^T\mathbf X_r.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Y
+=
+\mathbf L_r^T\mathbf X_r.
+\]
+</div>
+
 <p>因此</p>
-<h1 id="boxed-mathbf-Y"><a href="#boxed-mathbf-Y" class="headerlink" title="[\boxed{\mathbf Y"></a>[<br>\boxed{<br>\mathbf Y</h1><p>\mathbf L_r^T<br>(\mathbf G_r+s\mathbf C_r)^{-1}<br>\mathbf B_r<br>\mathbf U<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf Y
+=
+\mathbf L_r^T
+(\mathbf G_r+s\mathbf C_r)^{-1}
+\mathbf B_r
+\mathbf U
+}
+\]
+</div>
+
 <p>定义降阶传递函数矩阵</p>
-<h1 id="boxed-mathbf-H-r-s-1"><a href="#boxed-mathbf-H-r-s-1" class="headerlink" title="[\boxed{\mathbf H_r(s)"></a>[<br>\boxed{<br>\mathbf H_r(s)</h1><p>\mathbf L_r^T<br>(\mathbf G_r+s\mathbf C_r)^{-1}<br>\mathbf B_r<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf H_r(s)
+=
+\mathbf L_r^T
+(\mathbf G_r+s\mathbf C_r)^{-1}
+\mathbf B_r
+}
+\]
+</div>
+
 <p>则</p>
-<h1 id="mathbf-Y-1"><a href="#mathbf-Y-1" class="headerlink" title="[\mathbf Y"></a>[<br>\mathbf Y</h1><p>\mathbf H_r(s)\mathbf U.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Y
+=
+\mathbf H_r(s)\mathbf U.
+\]
+</div>
+
 <p>对于十端口系统，</p>
-<p>[<br>\mathbf H_r(s)\in\mathbb R^{10\times10}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf H_r(s)\in\mathbb R^{10\times10}.
+\]
+</div>
+
 <hr>
-<h1 id="11-传递函数矩阵中的每个元素代表什么"><a href="#11-传递函数矩阵中的每个元素代表什么" class="headerlink" title="11. 传递函数矩阵中的每个元素代表什么"></a>11. 传递函数矩阵中的每个元素代表什么</h1><p>对于电流输入、电压输出的系统，可以写为</p>
-<h1 id="mathbf-V-p-s"><a href="#mathbf-V-p-s" class="headerlink" title="[\mathbf V_p(s)"></a>[<br>\mathbf V_p(s)</h1><p>\mathbf Z(s)\mathbf I_p(s).<br>]</p>
+<h2 id="11-传递函数矩阵中的每个元素代表什么"><a href="#11-传递函数矩阵中的每个元素代表什么" class="headerlink" title="11. 传递函数矩阵中的每个元素代表什么"></a>11. 传递函数矩阵中的每个元素代表什么</h2><p>对于电流输入、电压输出的系统，可以写为</p>
+<div class="math-display">
+\[
+\mathbf V_p(s)
+=
+\mathbf Z(s)\mathbf I_p(s).
+\]
+</div>
+
 <p>其中</p>
-<h1 id="mathbf-Z-s"><a href="#mathbf-Z-s" class="headerlink" title="[\mathbf Z(s)"></a>[<br>\mathbf Z(s)</h1><p>\begin{bmatrix}<br>Z_{11}&amp;Z_{12}&amp;\cdots&amp;Z_{1,10}\<br>Z_{21}&amp;Z_{22}&amp;\cdots&amp;Z_{2,10}\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>Z_{10,1}&amp;Z_{10,2}&amp;\cdots&amp;Z_{10,10}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Z(s)
+=
+\begin{bmatrix}
+Z_{11}&Z_{12}&\cdots&Z_{1,10}\\
+Z_{21}&Z_{22}&\cdots&Z_{2,10}\\
+\vdots&\vdots&\ddots&\vdots\\
+Z_{10,1}&Z_{10,2}&\cdots&Z_{10,10}
+\end{bmatrix}.
+\]
+</div>
+
 <p>降阶后的端口阻抗矩阵为</p>
-<h1 id="mathbf-Z-r-s"><a href="#mathbf-Z-r-s" class="headerlink" title="[\mathbf Z_r(s)"></a>[<br>\mathbf Z_r(s)</h1><p>\mathbf L_r^T<br>(\mathbf G_r+s\mathbf C_r)^{-1}<br>\mathbf B_r.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Z_r(s)
+=
+\mathbf L_r^T
+(\mathbf G_r+s\mathbf C_r)^{-1}
+\mathbf B_r.
+\]
+</div>
+
 <p>其中</p>
-<h1 id="Z-ij-s"><a href="#Z-ij-s" class="headerlink" title="[Z_{ij}(s)"></a>[<br>Z_{ij}(s)</h1><p>\frac{<br>\text{端口 }i\text{ 的电压响应}<br>}{<br>\text{端口 }j\text{ 的注入电流}<br>}.<br>]</p>
+<div class="math-display">
+\[
+Z_{ij}(s)
+=
+\frac{
+\text{端口 }i\text{ 的电压响应}
+}{
+\text{端口 }j\text{ 的注入电流}
+}.
+\]
+</div>
+
 <p>因此：</p>
 <ul>
-<li>第 (j) 列表示激励端口 (j)；</li>
-<li>第 (i) 行表示观察端口 (i)。</li>
+<li>第 $j$ 列表示激励端口 $j$；</li>
+<li>第 $i$ 行表示观察端口 $i$。</li>
 </ul>
 <p>例如，仅在端口 3 注入单位电流：</p>
-<h1 id="mathbf-U"><a href="#mathbf-U" class="headerlink" title="[\mathbf U"></a>[<br>\mathbf U</h1><h1 id="mathbf-e-3"><a href="#mathbf-e-3" class="headerlink" title="\mathbf e_3"></a>\mathbf e_3</h1><p>\begin{bmatrix}<br>0\<br>0\<br>1\<br>0\<br>\vdots\<br>0<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf U
+=
+\mathbf e_3
+=
+\begin{bmatrix}
+0\\
+0\\
+1\\
+0\\
+\vdots\\
+0
+\end{bmatrix}.
+\]
+</div>
+
 <p>则</p>
-<h1 id="mathbf-Y-2"><a href="#mathbf-Y-2" class="headerlink" title="[\mathbf Y"></a>[<br>\mathbf Y</h1><p>\mathbf H_r(s)\mathbf e_3.<br>]</p>
-<p>结果正好是 (\mathbf H_r(s)) 的第 3 列：</p>
-<h1 id="mathbf-Y-3"><a href="#mathbf-Y-3" class="headerlink" title="[\mathbf Y"></a>[<br>\mathbf Y</h1><p>\begin{bmatrix}<br>H_{1,3}\<br>H_{2,3}\<br>\vdots\<br>H_{10,3}<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Y
+=
+\mathbf H_r(s)\mathbf e_3.
+\]
+</div>
+
+<p>结果正好是 $\mathbf H_r(s)$ 的第 3 列：</p>
+<div class="math-display">
+\[
+\mathbf Y
+=
+\begin{bmatrix}
+H_{1,3}\\
+H_{2,3}\\
+\vdots\\
+H_{10,3}
+\end{bmatrix}.
+\]
+</div>
+
 <p>其中：</p>
-<p>[<br>H_{1,3}<br>]</p>
+<div class="math-display">
+\[
+H_{1,3}
+\]
+</div>
+
 <p>表示端口 3 激励时端口 1 的响应；</p>
-<p>[<br>H_{2,3}<br>]</p>
+<div class="math-display">
+\[
+H_{2,3}
+\]
+</div>
+
 <p>表示端口 3 激励时端口 2 的响应；</p>
-<p>[<br>\cdots<br>]</p>
-<p>[<br>H_{10,3}<br>]</p>
+<div class="math-display">
+\[
+\cdots
+\]
+</div>
+
+<div class="math-display">
+\[
+H_{10,3}
+\]
+</div>
+
 <p>表示端口 3 激励时端口 10 的响应。</p>
 <p>因此，降阶之后仍然可以明确知道每个输出对应哪个原始端口。</p>
 <hr>
-<h1 id="12-多端口同时激励时如何计算"><a href="#12-多端口同时激励时如何计算" class="headerlink" title="12. 多端口同时激励时如何计算"></a>12. 多端口同时激励时如何计算</h1><p>如果十个端口同时施加输入：</p>
-<h1 id="mathbf-U-1"><a href="#mathbf-U-1" class="headerlink" title="[\mathbf U"></a>[<br>\mathbf U</h1><p>\begin{bmatrix}<br>I_1\<br>I_2\<br>\vdots\<br>I_{10}<br>\end{bmatrix},<br>]</p>
+<h2 id="12-多端口同时激励时如何计算"><a href="#12-多端口同时激励时如何计算" class="headerlink" title="12. 多端口同时激励时如何计算"></a>12. 多端口同时激励时如何计算</h2><p>如果十个端口同时施加输入：</p>
+<div class="math-display">
+\[
+\mathbf U
+=
+\begin{bmatrix}
+I_1\\
+I_2\\
+\vdots\\
+I_{10}
+\end{bmatrix},
+\]
+</div>
+
 <p>则</p>
-<h1 id="mathbf-Y-4"><a href="#mathbf-Y-4" class="headerlink" title="[\mathbf Y"></a>[<br>\mathbf Y</h1><p>\mathbf H_r(s)\mathbf U.<br>]</p>
-<p>端口 (i) 的输出为</p>
-<h1 id="Y-i"><a href="#Y-i" class="headerlink" title="[Y_i"></a>[<br>Y_i</h1><p>\sum_{j&#x3D;1}^{10}<br>H_{ij}(s)I_j.<br>]</p>
+<div class="math-display">
+\[
+\mathbf Y
+=
+\mathbf H_r(s)\mathbf U.
+\]
+</div>
+
+<p>端口 $i$ 的输出为</p>
+<div class="math-display">
+\[
+Y_i
+=
+\sum_{j=1}^{10}
+H_{ij}(s)I_j.
+\]
+</div>
+
 <p>例如端口 1 的电压为</p>
-<h1 id="Y-1"><a href="#Y-1" class="headerlink" title="[Y_1"></a>[<br>Y_1</h1><p>H_{11}I_1<br>+<br>H_{12}I_2<br>+<br>\cdots<br>+<br>H_{1,10}I_{10}.<br>]</p>
+<div class="math-display">
+\[
+Y_1
+=
+H_{11}I_1
++
+H_{12}I_2
++
+\cdots
++
+H_{1,10}I_{10}.
+\]
+</div>
+
 <p>这说明端口 1 的响应包含所有输入端口对它的共同影响。</p>
 <hr>
-<h1 id="13-PRIMA-的时域仿真方法"><a href="#13-PRIMA-的时域仿真方法" class="headerlink" title="13. PRIMA 的时域仿真方法"></a>13. PRIMA 的时域仿真方法</h1><p>降阶模型为</p>
-<h1 id="mathbf-C-r-dot-mathbf-x-r-t-mathbf-G-r-mathbf-x-r-t"><a href="#mathbf-C-r-dot-mathbf-x-r-t-mathbf-G-r-mathbf-x-r-t" class="headerlink" title="[\mathbf C_r\dot{\mathbf x}_r(t)+\mathbf G_r\mathbf x_r(t)"></a>[<br>\mathbf C_r\dot{\mathbf x}_r(t)<br>+<br>\mathbf G_r\mathbf x_r(t)</h1><p>\mathbf B_r\mathbf u(t).<br>]</p>
+<h2 id="13-PRIMA-的时域仿真方法"><a href="#13-PRIMA-的时域仿真方法" class="headerlink" title="13. PRIMA 的时域仿真方法"></a>13. PRIMA 的时域仿真方法</h2><p>降阶模型为</p>
+<div class="math-display">
+\[
+\mathbf C_r\dot{\mathbf x}_r(t)
++
+\mathbf G_r\mathbf x_r(t)
+=
+\mathbf B_r\mathbf u(t).
+\]
+</div>
+
 <p>例如使用后向欧拉法：</p>
-<p>[<br>\dot{\mathbf x}_r(t_k)<br>\approx<br>\frac{<br>\mathbf x_r^k-\mathbf x_r^{k-1}<br>}{<br>\Delta t<br>}.<br>]</p>
+<div class="math-display">
+\[
+\dot{\mathbf x}_r(t_k)
+\approx
+\frac{
+\mathbf x_r^k-\mathbf x_r^{k-1}
+}{
+\Delta t
+}.
+\]
+</div>
+
 <p>代入降阶系统：</p>
-<h1 id="mathbf-C-r-frac-mathbf-x-r-k-mathbf-x-r-k-1-Delta-t-mathbf-G-r-mathbf-x-r-k"><a href="#mathbf-C-r-frac-mathbf-x-r-k-mathbf-x-r-k-1-Delta-t-mathbf-G-r-mathbf-x-r-k" class="headerlink" title="[\mathbf C_r\frac{\mathbf x_r^k-\mathbf x_r^{k-1}}{\Delta t}+\mathbf G_r\mathbf x_r^k"></a>[<br>\mathbf C_r<br>\frac{<br>\mathbf x_r^k-\mathbf x_r^{k-1}<br>}{<br>\Delta t<br>}<br>+<br>\mathbf G_r\mathbf x_r^k</h1><p>\mathbf B_r\mathbf u^k.<br>]</p>
+<div class="math-display">
+\[
+\mathbf C_r
+\frac{
+\mathbf x_r^k-\mathbf x_r^{k-1}
+}{
+\Delta t
+}
++
+\mathbf G_r\mathbf x_r^k
+=
+\mathbf B_r\mathbf u^k.
+\]
+</div>
+
 <p>整理后得到</p>
-<h1 id="boxed-left-mathbf-G-r-frac-mathbf-C-r-Delta-t-right-mathbf-x-r-k"><a href="#boxed-left-mathbf-G-r-frac-mathbf-C-r-Delta-t-right-mathbf-x-r-k" class="headerlink" title="[\boxed{\left(\mathbf G_r+\frac{\mathbf C_r}{\Delta t}\right)\mathbf x_r^k"></a>[<br>\boxed{<br>\left(<br>\mathbf G_r<br>+<br>\frac{\mathbf C_r}{\Delta t}<br>\right)<br>\mathbf x_r^k</h1><p>\mathbf B_r\mathbf u^k<br>+<br>\frac{\mathbf C_r}{\Delta t}<br>\mathbf x_r^{k-1}<br>}<br>]</p>
-<p>每个时间步求解出 (\mathbf x_r^k) 后，再计算</p>
-<h1 id="boxed-mathbf-y-k"><a href="#boxed-mathbf-y-k" class="headerlink" title="[\boxed{\mathbf y^k"></a>[<br>\boxed{<br>\mathbf y^k</h1><p>\mathbf L_r^T\mathbf x_r^k<br>}<br>]</p>
+<div class="math-display">
+\[
+\boxed{
+\left(
+\mathbf G_r
++
+\frac{\mathbf C_r}{\Delta t}
+\right)
+\mathbf x_r^k
+=
+\mathbf B_r\mathbf u^k
++
+\frac{\mathbf C_r}{\Delta t}
+\mathbf x_r^{k-1}
+}
+\]
+</div>
+
+<p>每个时间步求解出 $\mathbf x_r^k$ 后，再计算</p>
+<div class="math-display">
+\[
+\boxed{
+\mathbf y^k
+=
+\mathbf L_r^T\mathbf x_r^k
+}
+\]
+</div>
+
 <p>对于十端口系统，</p>
-<h1 id="mathbf-y-k"><a href="#mathbf-y-k" class="headerlink" title="[\mathbf y^k"></a>[<br>\mathbf y^k</h1><p>\begin{bmatrix}<br>v_{p,1}(t_k)\<br>v_{p,2}(t_k)\<br>\vdots\<br>v_{p,10}(t_k)<br>\end{bmatrix}.<br>]</p>
+<div class="math-display">
+\[
+\mathbf y^k
+=
+\begin{bmatrix}
+v_{p,1}(t_k)\\
+v_{p,2}(t_k)\\
+\vdots\\
+v_{p,10}(t_k)
+\end{bmatrix}.
+\]
+</div>
+
 <p>程序中的基本流程可以写成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">预处理：A = G_r + C_r / Δt</span><br><span class="line"></span><br><span class="line">对于每个时间步 k：</span><br><span class="line">    rhs = B_r u^k + (C_r / Δt) x_r^(k-1)</span><br><span class="line">    求解 A x_r^k = rhs</span><br><span class="line">    计算 y^k = L_r^T x_r^k</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/07/16/prima/" data-id="cmrna6ve20000p4uh4sir59bi" data-title="prima" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2026/07/16/prima/" data-id="cmrnaxdse000334uhc9cs2g8y" data-title="PRIMA 降阶模型的物理含义、端口对应关系与仿真方法" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PRIMA/" rel="tag">PRIMA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E9%99%8D%E9%98%B6/" rel="tag">模型降阶</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F/" rel="tag">电路仿真</a></li></ul>
+
     </footer>
   </div>
   
@@ -435,7 +1370,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog%E6%90%AD%E5%BB%BA/" rel="tag">blog搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/" rel="tag">hexo+github</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/PRIMA/" rel="tag">PRIMA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog%E6%90%AD%E5%BB%BA/" rel="tag">blog搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo-github/" rel="tag">hexo+github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E9%99%8D%E9%98%B6/" rel="tag">模型降阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F/" rel="tag">电路仿真</a></li></ul>
     </div>
   </div>
 
@@ -445,7 +1380,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo+github</a>
+      <a href="/tags/PRIMA/" style="font-size: 10px;">PRIMA</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/hexo-github/" style="font-size: 10px;">hexo+github</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E9%99%8D%E9%98%B6/" style="font-size: 10px;">模型降阶</a> <a href="/tags/%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F/" style="font-size: 10px;">电路仿真</a>
     </div>
   </div>
 
@@ -467,7 +1402,7 @@
       <ul>
         
           <li>
-            <a href="/2026/07/16/prima/">prima</a>
+            <a href="/2026/07/16/prima/">PRIMA 降阶模型的物理含义、端口对应关系与仿真方法</a>
           </li>
         
           <li>
